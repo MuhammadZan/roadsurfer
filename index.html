@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#120810" />
+    <title>Roadster Surfer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23140c12' width='32' height='32' rx='6'/%3E%3Cpath d='M5 19h22l-3.2-5.2H8.2z' fill='%23d30b12'/%3E%3Ccircle cx='11' cy='21.5' r='2.4' fill='%23f4efe6'/%3E%3Ccircle cx='21' cy='21.5' r='2.4' fill='%23f4efe6'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body data-mode="attract">
+    <canvas id="c" tabindex="0"></canvas>
+    <div id="vignette"></div>
+
+    <header id="hud">
+      <div class="stat">
+        <span class="k">Score</span>
+        <strong id="score">0</strong>
+        <span class="sub" id="meters">0 m</span>
+      </div>
+      <div class="mid">
+        <div id="speed">0</div>
+        <span class="unit">km/h</span>
+        <div id="streak"></div>
+      </div>
+      <div class="stat right">
+        <span class="k">Volts</span>
+        <strong id="volts">0</strong>
+        <div id="powers"></div>
+      </div>
+    </header>
+
+    <button id="pause-btn" type="button">Pause</button>
+    <button id="mute" type="button">Sound</button>
+    <div id="toasts"></div>
+    <p id="coach">Arrows or A/D change lanes · Space jumps · Down or S tucks</p>
+
+    <section id="menu">
+      <p class="kicker">Midnight coast · endless run</p>
+      <h1>Roadster<br /><em>Surfer</em></h1>
+      <p class="tag">Three lanes. No brakes. An original open-cockpit electric roadster, built for the dusk highway.</p>
+      <p class="label">Paint</p>
+      <div class="choices" id="paints"></div>
+      <p class="label">Driver</p>
+      <div class="choices" id="drivers"></div>
+      <button id="play" class="play" type="button">Start run</button>
+      <div class="keys">
+        <span><kbd>←</kbd><kbd>→</kbd> lanes</span>
+        <span><kbd>Space</kbd> jump</span>
+        <span><kbd>↓</kbd> tuck</span>
+      </div>
+      <p class="best" id="menu-best">Best 0</p>
+    </section>
+
+    <section id="pause">
+      <div class="card">
+        <p class="kicker">Hold</p>
+        <h2>Paused</h2>
+        <button id="resume" class="play" type="button">Resume</button>
+        <button id="pause-menu" class="texty" type="button">Main menu</button>
+      </div>
+    </section>
+
+    <section id="over">
+      <div class="card">
+        <p class="kicker" id="over-kicker">Wrecked</p>
+        <p id="record" hidden>New record</p>
+        <h2 id="over-score">0</h2>
+        <ul class="stats">
+          <li><span>Distance</span><b id="over-meters">0</b></li>
+          <li><span>Volts</span><b id="over-volts">0</b></li>
+          <li><span>Near misses</span><b id="over-nears">0</b></li>
+          <li><span>Smashes</span><b id="over-smashes">0</b></li>
+        </ul>
+        <button id="retry" class="play" type="button">Run it back</button>
+        <button id="to-menu" class="texty" type="button">Main menu</button>
+      </div>
+    </section>
+
+    <div id="touch">
+      <button type="button" data-act="left" aria-label="Lane left">◀</button>
+      <button type="button" data-act="duck" aria-label="Tuck">▼</button>
+      <button type="button" data-act="jump" aria-label="Jump">▲</button>
+      <button type="button" data-act="right" aria-label="Lane right">▶</button>
+    </div>
+
+    <p id="fail" hidden>This browser can’t start WebGL, which Roadster Surfer needs to draw the highway.</p>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
